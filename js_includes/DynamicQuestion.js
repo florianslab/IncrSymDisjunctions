@@ -404,7 +404,7 @@ jqueryWidget: {
                 assert(t.options[currentElement.this] instanceof jQuery || typeof(t.options[currentElement.this]) == "string",
                        "The value for option '"+currentElement.this+"' cannot be added to the sequence.");
                 domelements[el] = t.options[currentElement.this];
-                if (typeof domelements[el] == "string") domelements[el] = $(domelements[el]);
+                if (typeof domelements[el] == "string") domelements[el] = $("<p>").append(domelements[el]);
             }
             // If trying to add an unrecognized 'this,' report it
             else
