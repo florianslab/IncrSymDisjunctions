@@ -132,7 +132,7 @@ var items = [
                         sentence: function(x){ return get_sentence(x.sentence); },
                         inference: function(x){ return get_inference(x.inference); },
                         sequence: [
-                            //{this: "legend"},       // DEBUG INFORMATION
+                            {this: "legend"},       // DEBUG INFORMATION
                             {this: "sentence"},
                             {this: "inference"},
                             {this: "answers", showKeys: "top"}
