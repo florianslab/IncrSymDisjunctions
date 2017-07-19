@@ -397,8 +397,8 @@ jqueryWidget: {
               }
             }
             // If it is the legend, it has its special class
-            else if (currentElement.this == "legend")
-                domelements[el] = $(document.createElement("p")).append(currentElement.legend).addClass(this.cssPrefix+"legend");
+            //else if (currentElement.this == "legend")
+            //    domelements[el] = $(document.createElement("p")).append(currentElement.legend).addClass(this.cssPrefix+"legend");
             // Otherwise, see if the value of 'this' is a name of an option and try to add it
             else if (t.options.hasOwnProperty(currentElement.this)) {
                 assert(t.options[currentElement.this] instanceof jQuery || typeof(t.options[currentElement.this]) == "string",
