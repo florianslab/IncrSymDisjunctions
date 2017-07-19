@@ -128,7 +128,7 @@ var items = [
                       "test",                       // Label of the item
                       "DynamicQuestion",            // Controller
                       {
-                        legend: function(x){ return [x.item,x.group,x.condition,x.inference_about,x.trigger,x.sentence,x.inference].join("+"); },
+                        legend: function(x){ return [x.item,x.group,x.condition,x.type,x.inference_about,x.trigger,x.sentence,x.inference].join("+"); },
                         sentence: function(x){ return get_sentence(x.sentence); },
                         inference: function(x){ return get_inference(x.inference); },
                         sequence: [
