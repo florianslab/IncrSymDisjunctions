@@ -2,7 +2,6 @@ var shuffleSequence = seq("instruction", "practice", rshuffle("test"), "postExp"
 //var practiceItemTypes = ["practice"];
 var showProgressBar = false;
 var manualSendResults = true;
-var counterOverride = 3;
 
 var defaults = [
     "DynamicQuestion", {
