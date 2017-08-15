@@ -88,7 +88,8 @@ var items = [
     
     ["practice", "DynamicQuestion", {
         legend: "practice2",
-        sentence: get_sentence("Either Ryan studied economics or he is a self-made man"),
+        //sentence: get_sentence("Either Ryan studied economics or he is a self-made man"),
+        sentence: get_sentence("If Ryan studied economics, he isn't a self made man"),
         inference: get_inference("Ryan studied economics"),
         enabled: false,
         sequence: [
@@ -100,10 +101,10 @@ var items = [
                 t.safeBind($(document),"keydown", function(e) {
                     if (t.feedbackKey == false) return;
                     if (e.keyCode == 74)
-                        TT("#No", "Right: your interlocutor said that Ryan studied economics <b>or is a self-made man</b>, so you cannot conclude for sure that he studied economics.",
+                        TT("#No", "Right: your interlocutor said that <b>if</b> Ryan studied economics isn't a self-made man, so you cannot conclude for sure that he studied economics.",
                            "Press Space", "bc", "feedback-right")(t);
                     else if (e.keyCode == 70)
-                        TT("#Yes", "Wrong: your interlocutor said that Ryan studied economics <b>or is a self-made man</b>, so you cannot conclude for sure that he studied economics.",
+                        TT("#Yes", "Wrong: your interlocutor said that <b>if</b> Ryan studied economics isn't a self-made man, so you cannot conclude for sure that he studied economics.",
                            "Press Space", "bc", "feedback-wrong")(t);
                     else return;
                     t.feedbackKey = false;
