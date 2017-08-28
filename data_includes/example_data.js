@@ -51,12 +51,12 @@ var items = [
     
     ["practice", "DynamicQuestion", {
         legend: "practice1",
-        sentence: get_sentence("Natalie both lives in New York and likes to run"),
+        sentence: get_sentence("Natalie lives in New York and likes to run"),
         inference: get_inference("Natalie lives in the USA"),
         enabled: false,
         sequence: [
             {this: "sentence"},
-            TT("#sentence", "Here your interlocutor said that Natalie lives in New York and likes to run.", "Press Space", "bc"),
+            TT("#sentence", "Here your interlocutor said that Natalie lives in New York and that she likes to run.", "Press Space", "bc"),
             {pause: "key\x01"},
             {this: "inference"},
             TT("#inference", "You have to tell whether this leads you to conclude that Natalie lives in the USA.", "Press Space", "bc"),
@@ -84,11 +84,47 @@ var items = [
             function(t){ t.finishedCallback(); }
         ]
     }],
-    
+
     ["practice", "DynamicQuestion", {
         legend: "practice2",
+        sentence: get_sentence("Carolyn loves boxing but she never watches it on TV"),
+        inference: get_inference("Carolyn never watches boxing on TV"),
+        enabled: false,
+        sequence: [
+            {this: "sentence"},
+            //TT("#sentence", "Here your interlocutor said that Carolyn loves boxing and that she doesn't watch it on television.", "Press Space", "bc"),
+            //{pause: "key\x01"},
+            {this: "inference"},
+            //TT("#inference", "You have to tell whether this leads you to conclude that Carolyn never watches boxing on TV.", "Press Space", "bc"),
+            //{pause: "key\x01"},
+            {this: "answers", showKeys: "top"},
+            //TT("#Yes", "Simply press the <b>F</b> key if you conclude that Carolyn never watches boxing on TV...", "Press Space", "bc"),
+            {pause: "key\x01"},
+            //TT("#No", "... or press the <b>J</b> key if you do not conclude that.", "Press Space", "bc"),
+            {pause: "key\x01"},
+            function(t){
+                t.feedbackKey = true;
+                t.safeBind($(document),"keydown", function(e) {
+                    if (t.feedbackKey == false) return;
+                    if (e.keyCode == 70)
+                        TT("#Yes", "Right: your interlocutor said that Carolyn loves boxing but <b>never watches it on TV</b>, so you can conclude that she never watches boxing on TV.", 
+                           "Press Space", "bc", "feedback-right")(t);
+                    else if (e.keyCode == 74)
+                        TT("#No", "Wrong: your interlocutor said that Carolyn loves boxing but <b>never watches it on TV</b>, so you can conclude that she never watches boxing on TV.",
+                           "Press Space", "bc", "feedback-wrong")(t);
+                    else return;
+                    t.feedbackKey = false;
+                });
+            },
+            {pause: "key\x01"},
+            function(t){ t.finishedCallback(); }
+        ]
+    }],
+    
+    ["practice", "DynamicQuestion", {
+        legend: "practice3",
         //sentence: get_sentence("Either Ryan studied economics or he is a self-made man"),
-        sentence: get_sentence("If Ryan studied economics, he isn't a self made man"),
+        sentence: get_sentence("Either Ryan studied economics, or he is a self made man"),
         inference: get_inference("Ryan studied economics"),
         enabled: false,
         sequence: [
@@ -100,10 +136,38 @@ var items = [
                 t.safeBind($(document),"keydown", function(e) {
                     if (t.feedbackKey == false) return;
                     if (e.keyCode == 74)
-                        TT("#No", "Right: your interlocutor said that <b>if</b> Ryan studied economics isn't a self-made man, so you cannot conclude for sure that he studied economics.",
+                        TT("#No", "Right: your interlocutor said that <b>either</b> Ryan studied economics <b>or</b> he is a self-made man, so you cannot conclude for sure that he studied economics.",
                            "Press Space", "bc", "feedback-right")(t);
                     else if (e.keyCode == 70)
-                        TT("#Yes", "Wrong: your interlocutor said that <b>if</b> Ryan studied economics isn't a self-made man, so you cannot conclude for sure that he studied economics.",
+                        TT("#Yes", "Wrong: your interlocutor said that <b>either</b> Ryan studied economics <b>or</b> he is a self-made man, so you cannot conclude for sure that he studied economics.",
+                           "Press Space", "bc", "feedback-wrong")(t);
+                    else return;
+                    t.feedbackKey = false;
+                });
+            },
+            {pause: "key\x01"},
+            function(t){ t.finishedCallback(); }
+        ]
+    }],
+
+    ["practice", "DynamicQuestion", {
+        legend: "practice4",
+        sentence: get_sentence("Either Martha is CEO of a company, or she has her own small business"),
+        inference: get_inference("Martha has her own small business"),
+        enabled: false,
+        sequence: [
+            {this: "sentence"},
+            {this: "inference"},
+            {this: "answers", showKeys: "top"},
+            function(t){
+                t.feedbackKey = true;
+                t.safeBind($(document),"keydown", function(e) {
+                    if (t.feedbackKey == false) return;
+                    if (e.keyCode == 74)
+                        TT("#No", "Right: your interlocutor said that <b>either</b> Martha is CEO of a company <b>or</b> she has her own small business, so you cannot conclude for sure that she has her own small business.",
+                           "Press Space", "bc", "feedback-right")(t);
+                    else if (e.keyCode == 70)
+                        TT("#Yes", "Wrong: your interlocutor said that <b>either</b> Martha is CEO of a company <b>or</b> she has her own small business, so you cannot conclude for sure that she has her own small business.",
                            "Press Space", "bc", "feedback-wrong")(t);
                     else return;
                     t.feedbackKey = false;
