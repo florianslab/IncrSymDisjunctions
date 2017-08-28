@@ -99,9 +99,9 @@ var items = [
             //{pause: "key\x01"},
             {this: "answers", showKeys: "top"},
             //TT("#Yes", "Simply press the <b>F</b> key if you conclude that Carolyn never watches boxing on TV...", "Press Space", "bc"),
-            {pause: "key\x01"},
+            //{pause: "key\x01"},
             //TT("#No", "... or press the <b>J</b> key if you do not conclude that.", "Press Space", "bc"),
-            {pause: "key\x01"},
+            //{pause: "key\x01"},
             function(t){
                 t.feedbackKey = true;
                 t.safeBind($(document),"keydown", function(e) {
